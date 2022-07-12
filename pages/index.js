@@ -15,13 +15,15 @@ export default function Home() {
   return (
     <div>
       <button onClick={changeState}>Click me</button>
+      <div>{data.navbarOpened}</div>
+      {data.navbarOpened ? <div>TRUE</div> : null}
     </div>
   );
 }
 
 export const getStaticProps = wrapper.getStaticProps(
   (store) => async (context) => {
-    console.log("context");
+    console.log(context, "context");
     store.dispatch(navbarToggle());
     store.dispatch(END);
     await store.sagaTask.toPromise();
