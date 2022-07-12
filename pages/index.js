@@ -6,6 +6,7 @@ import { END } from "redux-saga";
 
 export default function Home() {
   const dispatch = useDispatch();
+
   const data = useSelector((state) => state.state);
   // console.log(data);
 
@@ -24,7 +25,7 @@ export default function Home() {
 export const getStaticProps = wrapper.getStaticProps(
   (store) => async (context) => {
     console.log(context, "context");
-    store.dispatch(navbarToggle());
+    // store.dispatch(navbarToggle());
     store.dispatch(END);
     await store.sagaTask.toPromise();
   }
